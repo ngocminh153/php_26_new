@@ -21,25 +21,27 @@
             
             <div class="form-group">
                 <label for="">Mã sinh viên</label>
-                <input type="text" class="form-control" id="" placeholder="Nhập mã sinh viên" name="">
+                <input type="text" class="form-control" id="" placeholder="Nhập mã sinh viên" name="id">
             </div>
             
             <div class="form-group">
                 <label for="">Họ tên</label>
-                <input type="text" class="form-control" id="" placeholder="Nhập họ tên sinh viên" name="">
+                <input type="text" class="form-control" id="" placeholder="Nhập họ tên sinh viên" name="name">
             </div>  
             
             <div class="form-group">
                 <label for="">Số điện thoại</label>
-                <input type="text" class="form-control" id="" placeholder="Nhập vào mật khẩu" name="">
+                <input type="text" class="form-control" id="" placeholder="Nhập số điện thoại" name="phoneNumber">
             </div> 
 
             <div class="form-group">
                 <label for="">Email</label>
-                <input type="email" class="form-control" id="" placeholder="Nhập vào mật khẩu" name="">
+                <input type="email" class="form-control" id="" placeholder="Nhập email" name="email">
             </div> 
 
             <div class="form-group">
+                <label for="">Giới tính</label>
+                <br>
                 <form>
                     <input name="gioitinh" type="radio" value="Nam" />Nam
                     <input name="gioitinh" type="radio" value="Nữ" />Nữ
@@ -49,7 +51,7 @@
 
             <div class="form-group">
                 <label for="">Địa chỉ</label>
-                <input type="text" class="form-control" id="" placeholder="Nhập vào mật khẩu" name="">
+                <input type="text" class="form-control" id="" placeholder="Nhập địa chỉ" name="address">
             </div> 
 
             <button type="submit" class="btn btn-primary">Lưu thông tin</button>
