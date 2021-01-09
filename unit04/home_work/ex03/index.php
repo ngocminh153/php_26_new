@@ -19,10 +19,10 @@
 </head>
 <body>
     <div class="container">
-      <h3 class="text-center">--- Documents ---</h3>
+        <h3 class="text-center">--- Documents ---</h3>
         <a href="upload.php" class="btn btn-success">Upload Document</a>
         <table class="table">
-          <thead>
+            <thead>
                 <th> No </th>
                 <th> Name </th>
                 <th> Downloads </th>
