@@ -1,5 +1,5 @@
 <?php 
-	session_start();
+  session_start();
   $products = array(
 
     'SP01'=> array('SP01','Điều hòa',10000,10),
@@ -9,8 +9,6 @@
   );
 
 ?>
-
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <title>b3</title>
@@ -24,6 +22,7 @@
 
 <div class="container">
   <h2>Hàng hóa</h2>
+  <a class="btn btn-success" href="detail.php" title="">Xem giỏ hàng</a>
    <div class="container">
      <table class="table">
     <thead>
@@ -43,7 +42,7 @@
         <td><?php echo $row[3] ?></td>
 
         <td>
-        	<a href="add.php?msp=<?php echo $row[0] ?>" title=""><button type="button" class="btn btn-primary">Thêm</button></a>
+        	<a href="add.php?msp=<?php echo $row[0] ?>" title=""><button type="button" class="btn btn-primary">Add</button></a>
         </td>
       </tr>
 
@@ -56,3 +55,4 @@
 
 </body>
 </html>
+
