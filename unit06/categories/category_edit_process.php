@@ -4,7 +4,7 @@
 
 	// var_dump($data);
 
-	$query = "UPDATE categories SET name=' ". $data['name'] ." ' ,description=' ". $data['description'] ." ' WHERE  id = " . $data['id'];
+	$query = "UPDATE categories SET name=' ". $data['name'] ." ' ,parent_id=' ". $data['parent_id'] ." ',thumbnail=' ". $data['thumbnail'] ." ', slug=' ". $data['slug'] ." ',description=' ". $data['description'] ." ',created_at=' ". $data['created_at'] ." ' WHERE  id = " . $data['id'];
 
 	$status = $conn->query($query);
 

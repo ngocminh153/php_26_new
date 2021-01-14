@@ -23,9 +23,25 @@
                 <label for="">Name</label>
                 <input type="text" class="form-control" id="" placeholder="" name="name">
             </div>
+             <div class="form-group">
+                <label for="">Danh Mục cha</label>
+                <input type="text" class="form-control" id="" placeholder="" name="parent_id">
+            </div>
+             <div class="form-group">
+                <label for="">Ảnh</label>
+                <input type="text" class="form-control" id="" placeholder="" name="thumbnail">
+            </div>
+             <div class="form-group">
+                <label for="">Slug</label>
+                <input type="text" class="form-control" id="" placeholder="" name="slug">
+            </div>
             <div class="form-group">
                 <label for="">Description</label>
                 <input type="text" class="form-control" id="" placeholder="" name="description">
+            </div>
+             <div class="form-group">
+                <label for="">Ngày tạo</label>
+                <input type="text" class="form-control" id="" placeholder="" name="created_at">
             </div>
             <button type="submit" class="btn btn-primary">Create</button>
         </form>
