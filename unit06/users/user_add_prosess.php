@@ -1,28 +1,20 @@
 <?php 
-	// print_r($_POST);
+	// Thong so ket noi CSDL
+	
+require_once('connect.php');
 
-	$servername = "localhost";
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-	$username = "root";
-
-	$password = "";
-
-	$dbname = "php_blog";
-
-	$conn = new mysqli($servername, $username, $password, $dbname);
-
-	// Lấy dữ liệu từ form gửi lên, gán vào biến data
+// Lấy dữ liệu từ form gửi lên, gán vào biến data
     $data = $_POST;
 
 // Viết câu lệnh để thêm dữ liệu
-    $query = "INSERT INTO categories (name, parent_id, thumbnail, slug, description, created_at) VALUES ('".$data['name']."', '".$data['parent_id']."','".$data['thumbnail']."','".$data['slug']."','".$data['description']."','".$data['created_at']."')";
-
+    $query = "INSERT INTO users (id,name, email,password,avatar,created_at) VALUES (' ".$data['id']." ',' ".$data['name']." ',' ".$data['email']." ' , '". $data['password']. "', '". $data['avatar']. "', '". $data['created_at']. "')";
 
 // Thực thi câu lệnh
     $status = $conn->query($query);
-
-    // var_dump($status);
-
-    header("Location: categories.php");
-
+   if ($status == true) {
+   	 setcookie('add_new',"Thêm mới thành công !!!", time()+2);
+   }
+    header("Location: user.php");
 ?>

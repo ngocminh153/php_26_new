@@ -1,17 +1,27 @@
 <?php 
-	require_once "connect.php";
+	// require_once "../helpers/connect_helper.php";
+
+	require_once "../helpers/query_helper.php";
+	
 
 	// var_dump($conn);
 
-	$query = "SELECT * FROM categories";
 
-	$result = $conn->query($query);
+	// $categories = select('categories');
 
-	$categories = array();
+	$categories = select('categories', [' id', 'name', 'description', 'thumbnail']);
 
-	while ($row = $result->fetch_assoc()) {
-		$categories[]= $row;
-	}
+	// $query = "SELECT * FROM categories";
+
+	// $result = $conn->query($query);
+
+	// $categories = array();
+
+	// while ($row = $result->fetch_assoc()) {
+	// 	$categories[]= $row;
+	// }
+
+
 
 	// var_dump($categories
 	// foreach ($categories as $item)

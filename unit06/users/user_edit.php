@@ -1,14 +1,22 @@
 <?php 
-	require_once "connect.php";
+require_once('connect.php');
+$id = $_GET['id'];
 
-	$id = $_GET['id'];
+// Có thể dùng isset để kiểm tra tồn tại $_GET
 
-	$query = "SELECT * from categories WHERE id=" . $id;
+// $id = isset($_GET['$id'])?$_GET['$id']:NULL;
+// var_dump($id);
+// Viết câu lệnh để thêm dữ liệu
 
-	$result = $conn->query($query);
+$query = "SELECT * from users WHERE id = ". $id;
 
-	$category = $result->fetch_assoc();
+// Thực thi câu lệnh
+$result = $conn->query($query);
+
+// Trả về 1 bản ghi 
+$category = $result->fetch_assoc();
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,35 +35,30 @@
 <body>
     <div class="container">
     <h3 align="center">DevMind - Education And Technology Group</h3>
-    <h3 align="center">Add New Category</h3>
     <hr>
-        <form action="category_edit_process.php" method="POST" role="form" enctype="multipart/form-data">
-        	<input type="hidden" name="id" value="<?php echo $category['id']?>">
+        <form action="user_edit_process.php" method="POST" role="form" enctype="multipart/form-data">
+            <input type="hidden" name="id" value="<?php echo $category['id'] ?>">
             <div class="form-group">
                 <label for="">Name</label>
                 <input type="text" class="form-control" id="" placeholder="" name="name" value="<?php echo $category['name']?>">
             </div>
             <div class="form-group">
-                <label for="">Danh Mục cha</label>
-                <input type="text" class="form-control" id="" placeholder="" name="parent_id" value="<?php echo $category['parent_id']?>">
+                <label for="">Email</label>
+                <input type="text" class="form-control" id="" placeholder="" name="email" value="<?php echo $category['email']?>">
             </div>
             <div class="form-group">
-                <label for="">Ảnh</label>
-                <input type="text" class="form-control" id="" placeholder="" name="thumbnail" value="<?php echo $category['thumbnail']?>">
+                <label for="">Password</label>
+                <input type="text" class="form-control" id="" placeholder="" name="password" value="<?php echo $category['password']?>">
             </div>
-            <div class="form-group">
+             <div class="form-group">
                 <label for="">Slug</label>
-                <input type="text" class="form-control" id="" placeholder="" name="slug" value="<?php echo $category['slug']?>">
+                <input type="text" class="form-control" id="" placeholder="" name="avatar" value="<?php echo $category['avatar']?>">
             </div>
-            <div class="form-group">
-                <label for="">Description</label>
-                <input type="text" class="form-control" id="" placeholder="" name="description" value="<?php echo $category['description']?>">
-                <div class="form-group">
-                <label for="">Ngày tạo</label>
-                <input type="text" class="form-control" id="" placeholder="" name="created_at" value="<?php echo $category['created_at']?>">
+             <div class="form-group">
+                <label for="">Created At</label>
+                <input type="text" class="form-control" id="" placeholder="" name="created_at"  value="<?php echo $category['created_at']?>">
             </div>
-            </div>
-            <button type="submit" class="btn btn-primary">update</button>
+            <button type="submit" class="btn btn-primary">Create</button>
         </form>
     </div>
 </body>

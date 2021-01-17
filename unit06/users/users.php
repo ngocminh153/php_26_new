@@ -1,28 +1,21 @@
 <?php 
-	require_once "connect.php";
+    // Thong so ket noi CSDL
+require_once('connect.php');
+// Câu lệnh truy vấn
+$query = "SELECT * FROM users";
 
-	// var_dump($conn);
+// Thực thi câu lệnh
 
-	$query = "SELECT * FROM users";
+$result = $conn->query($query);
 
-	$result = $conn->query($query);
+// Tạo một mảng để chứa dữ liệu
 
-	$users = array();
+$users = [];
 
-	while ($row = $result->fetch_assoc()) {
-		$users[]= $row;
-	}
-
-	// var_dump($categories
-	// foreach ($categories as $item)
- //     // echo "<pre>";
- //     //      print_r($item);
- //     // echo "</pre>";
-
-
-
+while ($row = $result->fetch_assoc()) {
+    $users[] = $row;
+}
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,47 +33,42 @@
 </head>
 <body>
     <div class="container">
-        <h3 class="text-center">--- users ---</h3>
-        <a href="Category_add.php" class="btn btn-primary">Add New Category</a>
+        <h3 class="text-center">--- USERS ---</h3>
+        <a href="user_add.php" class="btn btn-primary">Add New User</a>
         <table class="table">
+            <?php if (isset($_COOKIE['add_new'])) { ?>
+                <div class="alert alert-success" role="alert">
+                  <?php echo $_COOKIE['add_new'] ?>
+                </div>
+            <?php } ?>
+            <?php if (isset($_COOKIE['update'])) { ?>
+                <div class="alert alert-info" role="alert">
+                  <?php echo $_COOKIE['update'] ?>
+                </div>
+            <?php } ?>
+            <?php if (isset($_COOKIE['delete'])) { ?>
+                <div class="alert alert-danger" role="alert">
+                  <?php echo $_COOKIE['delete'] ?>
+                </div>
+            <?php } ?>
             <thead>
                 <th>ID</th>
                 <th>Name</th>
-                <th>Thumbnail</th>
-                <th>Description</th>
+                <th>Avatar</th>
                 <th>Action</th>
             </thead>
-
-            <?php foreach ($categories as $item){ ?>
-            
-            <tr>
-                <td><?php echo $item['id']?></td>
-                <td><?php echo $item['name']?></td>
+            <?php foreach ($users as  $value) { ?>
+                <tr>
+                <td><?php echo $value['id'] ?></td>
+                <td><?php echo $value['name'] ?></td>
+                <td><?php echo $value['avatar']; ?></td>
                 <td>
-                    <img src="https://video-thumbs.mediacdn.vn//vtv/2018/10/2/0210thoi-su-19h-15384852850441347953968-a1b84_thumb3.jpg" width="100px" height="100px">
+                    <a href="detail.php?id=<?php echo $value['id']?>" class="btn btn-primary">Detail</a>
+                    <a href="user_edit.php?id=<?php echo $value['id']?>" class="btn btn-success">Edit</a>
+                    <a href="delete.php?id=<?php echo $value['id']?>" class="btn btn-danger">Delete</a>
                 </td>
-                <td><?php echo $item['description']?></td>
-                <td>
-                    <a href="#" class="btn btn-primary">Detail</a>
-                    <a href="category_edit.php?id=<?php echo $item['id'] ?>" class="btn btn-success">Edit</a>
-                    <a href="category_delete.php?id=<?php echo $item['id'] ?>" class="btn btn-danger">Delete</a>
-                </td>
-            </tr>
-            <!-- <tr>
-                <td>2</td>
-                <td>Bóng đá</td>
-                <td>
-                    <img src="https://image.thanhnien.vn/660/uploaded/quangtuyen/2019_03_05/u23tuanlinh_fpjh.jpg" width="100px" height="100px">
-                </td>
-                <td>Tin về bóng đá</td>
-                <td>
-                    <a href="#" class="btn btn-primary">Detail</a>
-                    <a href="#" class="btn btn-success">Edit</a>
-                    <a href="#" class="btn btn-danger">Delete</a>
-                </td>
-            </tr> -->
-
-        <?php } ?>
+                </tr>
+            <?php } ?>  
         </table>
     </div>
 </body>
