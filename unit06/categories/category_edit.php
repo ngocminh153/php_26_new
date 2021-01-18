@@ -1,13 +1,13 @@
 <?php 
-	require_once "connect.php";
+	// require_once "connect.php";
+    require_once "../helpers/query_helper.php";
+	// $id = $_GET['id'];
 
-	$id = $_GET['id'];
+	// $query = "SELECT * from categories WHERE id=" . $id;
 
-	$query = "SELECT * from categories WHERE id=" . $id;
+	// $result = $conn->query($query);
 
-	$result = $conn->query($query);
-
-	$category = $result->fetch_assoc();
+	// $category = $result->fetch_assoc();
 ?>
 <!DOCTYPE html>
 <html>
@@ -50,11 +50,12 @@
             <div class="form-group">
                 <label for="">Description</label>
                 <input type="text" class="form-control" id="" placeholder="" name="description" value="<?php echo $category['description']?>">
-                <div class="form-group">
+            </div>
+            <div class="form-group">
                 <label for="">Ngày tạo</label>
                 <input type="text" class="form-control" id="" placeholder="" name="created_at" value="<?php echo $category['created_at']?>">
             </div>
-            </div>
+            
             <button type="submit" class="btn btn-primary">update</button>
         </form>
     </div>
