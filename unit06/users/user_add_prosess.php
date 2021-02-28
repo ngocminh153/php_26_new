@@ -1,20 +1,40 @@
 <?php 
-	// Thong so ket noi CSDL
-	
-require_once('connect.php');
+	// print_r($_POST);
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+	// $servername = "localhost";
 
-// Lấy dữ liệu từ form gửi lên, gán vào biến data
+	// $username = "root";
+
+	// $password = "";
+
+	// $dbname = "php_blog";
+
+	// $conn = new mysqli($servername, $username, $password, $dbname);
+	// C2
+	// require_once "connect.php";
+	// C3
+	require_once "../helpers/query_helper.php";
+	require_once "../helpers/User.php";
+
+	// Lấy dữ liệu từ form gửi lên, gán vào biến data
     $data = $_POST;
 
 // Viết câu lệnh để thêm dữ liệu
-    $query = "INSERT INTO users (id,name, email,password,avatar,created_at) VALUES (' ".$data['id']." ',' ".$data['name']." ',' ".$data['email']." ' , '". $data['password']. "', '". $data['avatar']. "', '". $data['created_at']. "')";
+    // $query = "INSERT INTO categories (name, parent_id, thumbnail, slug, description, created_at) VALUES ('".$data['name']."', '".$data['parent_id']."','".$data['thumbnail']."','".$data['slug']."','".$data['description']."','".$data['created_at']."')";
+
 
 // Thực thi câu lệnh
-    $status = $conn->query($query);
-   if ($status == true) {
-   	 setcookie('add_new',"Thêm mới thành công !!!", time()+2);
-   }
-    header("Location: user.php");
+    // $status = $conn->query($query);
+
+    // var_dump($status);
+
+    $data_insert = [
+    	'name' => $data['name'],
+    	'email' => $data['email']
+    ];
+    $user = new User();
+    $status = $user->create($data_insert);
+
+    header("Location: users.php");
+
 ?>

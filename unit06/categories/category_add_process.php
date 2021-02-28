@@ -14,6 +14,8 @@
 	// require_once "connect.php";
 	// C3
 	require_once "../helpers/query_helper.php";
+	require_once "../helpers/Category.php";
+
 	// Lấy dữ liệu từ form gửi lên, gán vào biến data
     $data = $_POST;
 
@@ -30,8 +32,8 @@
     	'name' => $data['name'],
     	'description' => $data['description']
     ];
-
-    $status = insert('categories', $data_insert);
+    $category = new Category();
+    $status = $category->create($data_insert);
 
     header("Location: categories.php");
 

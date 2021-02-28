@@ -1,20 +1,21 @@
-<?php 
-	// require_once "connect.php";
- 	require_once "../helpers/query_helper.php";
+<?php
+require_once('../helper/Query.php');
+require_once('../helper/Category.php');
 	$data = $_POST;
-
-	// var_dump($data);
-
-	// $query = "UPDATE categories SET name=' ". $data['name'] ." ' ,parent_id=' ". $data['parent_id'] ." ',thumbnail=' ". $data['thumbnail'] ." ', slug=' ". $data['slug'] ." ',description=' ". $data['description'] ." ',created_at=' ". $data['created_at'] ." ' WHERE  id = " . $data['id'];
-
-	// $status = $conn->query($query);
-
-	$data_update = [
-    	'name' => $data['name'],
-    	'description' => $data['description']
-    ];
-
-	$status=  update('categories', $data_update, $data['id']);
-
-	header("Location: categories.php");
-?>
+	$data_insert = [
+		'name' => $data['name'],
+		'parent_id' => $data['parent_id'],
+		'thumbnail' => $data['thumbnail'],
+		'slug' => $data['slug'],
+		'description' => $data['description'],
+		'created_at' => $data['created_at']
+	];
+	// $query = "UPDATE categories SET name = '" . $data['name'] . "', parent_id = '".$data['parent_id']."', thumbnail = '".$data['thumbnail']."', slug = '".$data['slug']."' ,description ='". $data['description'] ."', created_at = '".$data['created_at']."'  WHERE  id =  " . $data['id'];
+	$category = new Category();
+	$categories = $category->fix($data_insert,$data['id']);
+	$status = $categories;
+	if ($status == true) {
+		setcookie('update',"Đã update thông tin thành công", time()+2);
+	}
+    header("Location: categories.php");
+?> 

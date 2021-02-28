@@ -2,14 +2,17 @@
 	// require_once "../helpers/connect_helper.php";
 
 	require_once "../helpers/query_helper.php";
+    require_once "../helpers/Post.php";
 	
+    $post = new Post();
+    $posts = $post->getList();
 
 	// var_dump($conn);
 
 
 	// $categories = select('categories');
 
-	$categories = select('categories', [' id', 'title', 'description', 'thumbnail']);
+	$categories = select('posts', [' id', 'title', 'description', 'thumbnail']);
 
 	// $query = "SELECT * FROM categories";
 

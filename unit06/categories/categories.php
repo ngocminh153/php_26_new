@@ -2,6 +2,7 @@
 	// require_once "../helpers/connect_helper.php";
 
 	require_once "../helpers/query_helper.php";
+    require_once "../helpers/Category.php";
 	
 
 	// var_dump($conn);
@@ -9,7 +10,9 @@
 
 	// $categories = select('categories');
 
-	$categories = select('categories', [' id', 'name', 'description', 'thumbnail']);
+	// $categories = select('categories', [' id', 'name', 'description', 'thumbnail']);
+    $category = new Category();
+    $categories =$category->getList();
 
 	// $query = "SELECT * FROM categories";
 

@@ -1,14 +1,12 @@
 <?php 
-	// require_once "connect.php";
-	require_once "../helpers/query_helper.php";
+	require_once('../helper/Query.php');
+	require_once('../helper/Category.php');
 	$id = $_GET['id'];
-	// var_dump($id);
-
-	// $query = "DELETE from categories where id = $id";
-
-	// $status = $conn->query($query);
-	$status = delete('categories', $id);
-
-	header("Location: categories.php");
-
-?>
+	$category = new Category();
+	$categories = $category->move($id);
+	$status = $categories;
+	if ($status == true) {
+		setcookie('delete',"Xóa một mục thành công", time()+2);
+	}
+	header("Location:categories.php");
+?> 

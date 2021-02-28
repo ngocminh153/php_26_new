@@ -22,7 +22,8 @@
 			exit();
 		}
  
-		$connection = connect();
+		$connection = new connection();
+		$conn = $connection->connect();
 
 		$result = $connection->query($query);
 

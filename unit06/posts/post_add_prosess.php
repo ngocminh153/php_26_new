@@ -14,6 +14,7 @@
 	// require_once "connect.php";
 	// C3
 	require_once "../helpers/query_helper.php";
+	require_once "../helpers/Post.php";
 	// Lấy dữ liệu từ form gửi lên, gán vào biến data
     $data = $_POST;
 
@@ -31,7 +32,8 @@
     	'description' => $data['description']
     ];
 
-    $status = insert('posts', $data_insert);
+    $post = new Post();
+    $status = $post->create($data_insert);
 
     header("Location: posts.php");
 

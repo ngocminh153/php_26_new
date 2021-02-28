@@ -1,11 +1,13 @@
 <?php 
 	require_once "connect.php";
-	$id = $_GET['id'];
-	// var_dump($id);
+	require_once "../helpers/User.php";
 
-	$query = "DELETE from users where id = $id";
-
-	$status = $conn->query($query);
+	$user = new User();
+	$users = $user->move($id);
+	$status = $users;
+	if ($status == true) {
+		setcookie('delete',"Xóa một mục thành công", time()+2);
+	}
 
 	header("Location: users.php");
 
